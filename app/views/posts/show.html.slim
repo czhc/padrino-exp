@@ -1,0 +1,3 @@
+.post
+  = partial 'posts/post', object: @post
+  = link_to "All posts", url_for(:posts, :index)
