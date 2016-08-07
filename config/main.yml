@@ -1,0 +1,6 @@
+main:
+  application:
+    secret: Test
+  contact:
+    sender: joshua@falken.fqdn
+    email:  info@falken.fqdn
