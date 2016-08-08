@@ -42,7 +42,7 @@ module PadrinoBlog
     # layout  :my_layout            # Layout can be in views/layouts/foo.ext or views/foo.ext (default :application)
     #
     get '/' do
-      "Hello World"
+      render 'home'
     end
 
     ##
