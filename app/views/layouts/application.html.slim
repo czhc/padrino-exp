@@ -1,0 +1,28 @@
+doctype Strict
+html
+  head
+    title= [@title, "Padrino EXP"].compact.join(" | ")
+    = stylesheet_link_tag 'normalize', 'application'
+    = javascript_include_tag 'jquery', 'application'
+    = yield_content :include
+  body
+    #header
+      ul.menu style='list-style-type:none;'
+        li style='float:left;padding: 3px 10px;' = link_to 'Home', '/'
+        li style='padding: 3px 10px;' = link_to 'Blog', url_for(:posts, :index)
+    #container
+      #main style='display:inline-block;width:80%'
+        = yield
+      #sidebar style='display:inline-block;width:20%;position:absolute'
+        h1 Sidebar
+        = form_tag url_for(:posts, :index), :method => 'get'  do
+          | Search for:
+          = text_field_tag 'query', :value => params[:query]
+          = submit_tag 'Search'
+        p Recent Posts
+        ul.bulleted
+          - cache('latest_posts', expires: 3) do
+            - Post.limit(3).each do |post|
+              li = post.name
+    #footer style='bottom:0;position:absolute'
+      | Copyright (c) 2009-2016 Padrino
