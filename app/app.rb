@@ -3,8 +3,9 @@ module PadrinoBlog
     use ConnectionPoolManagement
     register Padrino::Mailer
     register Padrino::Helpers
+    register Padrino::Cache
     enable :sessions
-
+    enable :caching
     ##
     # Caching support.
     #
